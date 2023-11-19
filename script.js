@@ -1,19 +1,36 @@
-const grid = document.querySelector(".grid");
+const body = document.querySelector("body");
+const grid = document.createElement("div");
+const button = document.querySelector("button");
+const GRID_MAX_WIDTH = 900;
 
-// for (let i = 0; i < 16; i++) {
-//   let row = document.createElement("div");
-//   row.className = "row";
-//   for (let j = 0; j < 16; j++) {
-//     let div = document.createElement("div");
-//     div.className = "block";
-//     row.appendChild(div);
-//   }
-//   grid.appendChild(row);
-// }
+grid.className = "grid";
 
-for (let i = 0; i < 16 ** 2; i++) {
-    let div = document.createElement("div");
-    div.className = "block";
+button.addEventListener("click", (e) => {
+  const gridSize = parseInt(prompt("Grid size"));
+  if (gridSize > 100) {
+    alert("Grid size cannot be bigger than 100");
+    return;
+  }
+  const blocks = document.querySelectorAll(".block");
+  blocks.forEach((block) => {
+    block.remove();
+  });
+  createGrid(gridSize);
+});
+createGrid(16);
+body.appendChild(grid);
 
-  grid.appendChild(div);
+function createGrid(size) {
+  const blockSize = Math.floor(GRID_MAX_WIDTH / size) - 4;
+  for (let i = 0; i < size ** 2; i++) {
+    let block = document.createElement("div");
+    block.className = "block";
+    block.style.width = blockSize + "px";
+    block.style.height = blockSize + "px";
+
+    grid.appendChild(block);
+    block.addEventListener("mouseover", (e) => {
+      e.target.style.backgroundColor = "red";
+    });
+  }
 }

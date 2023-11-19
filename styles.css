@@ -2,6 +2,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .grid {
@@ -17,7 +18,11 @@ body {
 }
 
 .block {
-  width: 50px;
-  height: 50px;
   border: 2px solid green;
+}
+
+button {
+  font-size: 36px;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
