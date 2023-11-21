@@ -12,6 +12,9 @@ gridButton.addEventListener("click", (e) => {
     alert("Grid size cannot be bigger than 100");
     return;
   }
+  if (!gridSize) {
+    return;
+  }
   const blocks = document.querySelectorAll(".block");
   blocks.forEach((block) => {
     block.remove();
@@ -19,9 +22,12 @@ gridButton.addEventListener("click", (e) => {
   createGrid(gridSize);
 });
 
-// clearButton.addEventListener("click", (e) => {
-
-// })
+clearButton.addEventListener("click", (e) => {
+  const blocks = document.querySelectorAll(".block");
+  blocks.forEach((block) => {
+    block.style.backgroundColor = "white";
+  });
+});
 
 createGrid(16);
 body.appendChild(grid);
@@ -35,7 +41,7 @@ function createGrid(size) {
     block.style.height = blockSize + "px";
 
     grid.appendChild(block);
-    
+
     block.addEventListener("mouseover", (e) => {
       e.target.style.backgroundColor = getRandomRGB();
     });
