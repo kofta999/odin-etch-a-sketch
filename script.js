@@ -4,7 +4,7 @@ const gridButton = document.querySelector("#gridButton");
 const clearButton = document.querySelector("#clearButton");
 const GRID_MAX_WIDTH = 900;
 
-grid.className = "grid";
+grid.id = "grid";
 
 gridButton.addEventListener("click", (e) => {
   const gridSize = parseInt(prompt("Grid size"));
@@ -42,13 +42,17 @@ function createGrid(size) {
 
     grid.appendChild(block);
 
+    let randomColor = getRandomColor();
+    let baseBrightness = 100;
+
     block.addEventListener("mouseover", (e) => {
-      e.target.style.backgroundColor = getRandomRGB();
+      console.log(`hsl(${randomColor}deg, 100%, ${baseBrightness}`);
+      baseBrightness = baseBrightness > 0 ? baseBrightness - 10 : 0;
+      e.target.style.backgroundColor = `hsl(${randomColor}deg, 100%, ${baseBrightness}%`;
     });
   }
 }
 
-function getRandomRGB() {
-  const [o, r, s] = [Math.round, Math.random, 255];
-  return `rgb(${o(r() * s)},${o(r() * s)} ,${o(r() * s)})`;
+function getRandomColor() {
+  return Math.round(Math.random() * 360);
 }

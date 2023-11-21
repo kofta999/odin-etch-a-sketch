@@ -3,9 +3,21 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background-color: #E7E7EB;
 }
 
-.grid {
+.title {
+  font-size: 72px;
+  font-weight: 900;
+  font-family: 'Courier New', Courier, monospace;
+  font-style: italic;
+}
+
+button {
+  border-radius: 5px;
+}
+
+#grid {
   display: flex;
   justify-content: center;
   align-items: center;
